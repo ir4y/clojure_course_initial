@@ -6,11 +6,11 @@
 
 (defn fib [max]
   (defn _fib 
-    ([] (_fib 1 1 ))
-    ([x y]
+    ([] (_fib 1 1 []))
+    ([x y result]
       (if (> y max) 
-        [y] 
-        (concat [x]  (_fib y (+ x y))))))
+        (concat [y] result)
+        (recur y (+ x y) (concat [x] result)))))
   _fib)
 
 (defn -main
